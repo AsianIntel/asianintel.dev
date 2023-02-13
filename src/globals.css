@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply text-white bg-black;
+    }
+}
+
+.tube-left {
+    background-image: conic-gradient(black 89deg, #FA00FF 90deg, #8700A9 160deg, black 220deg);
+}
+
+.tube-right {
+    background-image: conic-gradient(black 140deg, #8700A9 200deg, #FA00FF 270deg, black 271deg);
+}
