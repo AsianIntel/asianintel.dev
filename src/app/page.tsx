@@ -4,17 +4,18 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex flex-col py-24 gap-y-12 w-2/3 mx-auto">
-      <div className="grid grid-cols-2 justify-items-center">
+    <main className="flex flex-col py-24 gap-y-12 w-full lg:w-2/3 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-2 justify-items-center">
         <Image
           src={Profile}
           alt="Profile"
           className="rounded-full"
           width={200}
           height={200}
+          priority
         />
         <div className="flex flex-col gap-y-4 whitespace-nowrap">
-          <span className="text-5xl text-neutral-200">Gautam Abhyankar</span>
+          <span className="text-2xl md:text-4xl lg:text-5xl text-neutral-200">Gautam Abhyankar</span>
           <span className="text-neutral-700 font-bold">@AsianIntel</span>
           <span className="text-neutral-200">
             Your Local Discord Bot Developer
@@ -22,11 +23,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col px-24">
+      <div className="flex flex-col px-8 md:px-24">
         <span className="text-xs text-neutral-400 font-semibold uppercase tracking-widest">
           What do I know?
         </span>
-        <div className="flex mt-2 gap-x-2">
+        <div className="flex flex-wrap mt-2 gap-x-2">
           <div className="border-2 rounded-md border-neutral-600 text-neutral-200 px-4 py-1 flex items-center  gap-x-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +83,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col px-24">
+      <div className="flex flex-col px-8 md:px-24">
         <span className="text-xs text-neutral-400 font-semibold uppercase tracking-widest">
           What have I done?
         </span>
@@ -155,7 +156,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col px-24">
+      <div className="flex flex-col px-8 md:px-24">
         <span className="text-xs text-neutral-400 font-semibold uppercase tracking-widest">
           What have I studied?
         </span>
