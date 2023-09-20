@@ -185,8 +185,10 @@ export default function Home() {
               <ul className="list-disc list-inside">
                 <li>CS570 Analysis of Algorithms</li>
                 <li>CS420 Computer Graphics</li>
-                <li>CS561 Foundations of AI (Currently studying)</li>
-                <li>CS522 Game Engine Development (Currently studying)</li>
+                <li>CS561 Foundations of AI</li>
+                <li>CS522 Game Engine Development</li>
+                <li>CS576 Multimedia Systems Design (Currently Studying)</li>
+                <li>CS526 Advanced Mobile Devices and Game Consoles</li>
               </ul>
             </div>
           </div>
