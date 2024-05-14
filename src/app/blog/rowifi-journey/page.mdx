@@ -1,0 +1,37 @@
+# Unveiling the Magic: A Peek Inside RoWifi
+
+Dear Reader,
+
+This is an insight into the intricate workings of RoWifi, a Discord Bot that serves as the vital link between Discord servers and Roblox groups. This discourse will illuminate the technical intricacies and developmental journey undertaken by the creator.
+
+## Introduction
+
+RoWifi stands as a testament to seamless integration, facilitating the harmonious interaction of Discord communities and Roblox groups. Its multifaceted capabilities extend from the synchronization of Discord roles with Roblox ranks to the meticulous management of member rankings. Currently, RoWifi's reach extends across more than 100,000 servers, catering to the needs of approximately 4 million members.
+
+## History of the Bot
+
+Wondering what sparked it all? Back then, I was involved in a Roblox role-playing group (I was 16-17, do not judge), and they sought a custom bot to which I volunteered to create one. Word spread, and soon, other groups sought my bot's services. Before I knew it, demand soared. Recognizing the increasing interest, I made the strategic decision to transform RoWifi into a publicly accessible bot, marking its official release on June 15, 2018. While its initial functionality was modest, focused solely on rank bindings, subsequent enhancements and refinements have since broadened its scope and utility.
+
+## Fun Engineering
+
+RoWifi's technical infrastructure encompasses a sophisticated ecosystem comprising the Discord bot itself, a dedicated website, dashboard, API & miscellanous services. The bot and the API run on Google Cloud on a custom Nomad & Consul cluster. All of it is powered by a PostgreSQL database and a Redis cache. Leveraging the robustness of Rust programming language, the bot and API deliver unparalleled performance and reliability. Concurrently, the front-end components, including the website and dashboard, are meticulously crafted using React, Typescript, TailwindCSS, React Aria Components and Framer Motion, ensuring an intuitive user experience.
+
+### Auto Detection
+
+Auto Detection is a feature to keep all the members of a discord server synchronized. It does so by periodically checking all the member information and updating them. You may think what is the big deal about this. Is it not just running a bunch of functions on the member? You would be right. But in the words of a wise anoynomous engineer, "The hard part isn't in doing stuff, but in doing them at scale". On top of that, popular Roblox (unofficial) API endpoints tend to be heavily ratelimited, sometimes to the tune of 1 request per second. But then, how do you synchronize so many members? Well, the saving grace is Roblox IDs are shared across a lot of the entries in the Auto Detection Queue. (Also, the ratelimits are per-IP but we don't talk about that :)!). I feel like I could get away with a few more tricks, but that is something left to the future.
+
+### Ranking
+
+Oh boy! This one was a real head-scratcher. At the time of this post, there is no API key based endpoint for achieving this. You have to use a cookie that must be obtained manually from an incognito window and then you pass it through the "Cookie" header. Are we done here? No, we are not. Turns out you also need a CRSF token which you can get by making a failed request. It must be working now?? NOPE!!. The cookies mentioned above are continent locked. Well, how do you get around this then? Just throw up a VM in every continent. The Consul service mesh becomes really useful here.
+
+### Custombinds
+
+This has one of my favourite things to work upon. The aim of this feature was to create a scripting language to allow for the creation of highly customizable binds. I chose to model as a subset of Lua since the main language used by Robloxians is Lua. My current implementation is basically a recursive descent parser. However, there are a few glaring drawbacks such as no early return or no async functions allowed. Nonetheless, the features encompasses my goals of innovation & adapatability.
+
+
+I gave a good overview of a lot of engineering aspects involved in the creation of my bot. But I've left a very important one, why I chose Rust. Rust in its own description boasts about its speed, reliability & concurrency. I completely agree and there are a few things about Rust I would like point out. Stuff such as explicit mutability, no nullability, `Option`/`Result` enums are some of the reasons why I feel Rust promotes good and secure code style.
+
+So, there you have it—the saga of RoWifi from humble beginnings. As the journey unfolds, one thing remains certain: the adventure has only just begun.
+
+Peace out,<br/>
+Gautam.A
